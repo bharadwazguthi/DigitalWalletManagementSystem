@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void processTransaction(int from_user, int to_user, int amount, int balances[], int N) {
+void processTransaction(int from_user, int to_user, int amount, int balances[], int n) {
     if (balances[from_user - 1] >= amount) {
         balances[from_user - 1] -= amount;
         balances[to_user - 1] += amount;
@@ -11,9 +11,9 @@ void processTransaction(int from_user, int to_user, int amount, int balances[], 
     }
 }
 
-void bubbleSort(int user_ids[], int balances[], int N) {
-    for (int i = 0; i < N - 1; i++) {
-        for (int j = 0; j < N - 1 - i; j++) {
+void bubbleSort(int user_ids[], int balances[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - 1 - i; j++) {
             if (balances[j] > balances[j + 1]) {
 
                 int temp = balances[j];
@@ -29,25 +29,25 @@ void bubbleSort(int user_ids[], int balances[], int N) {
 }
 
 int main() {
-    int N;
-    cin >> N;
-    int user_ids[N], balances[N];
-    for (int i = 0; i < N; i++) {
+    int n;
+    cin >> n;
+    int user_ids[n], balances[n];
+    for (int i = 0; i < n; i++) {
         cin >> user_ids[i] >> balances[i];
     }
 
-    int T;
-    cin >> T;
-    for (int i = 0; i < T; i++) {
+    int m;
+    cin >> m;
+    for (int i = 0; i < m; i++) {
         int from_user, to_user, amount;
         cin >> from_user >> to_user >> amount;
-        processTransaction(from_user, to_user, amount, balances, N);
+        processTransaction(from_user, to_user, amount, balances, n);
     }
 
     cout << endl;
 
     bubbleSort(user_ids, balances, N);
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < n; i++) {
         cout << user_ids[i] << " " << balances[i] << endl;
     }
     return 0;
